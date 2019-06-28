@@ -1,0 +1,36 @@
+﻿<UserControl x:Name="csyLine" x:Class="ArcGISApp1.Controls.SymbolFormCSY.LineCsy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
+             xmlns:local="clr-namespace:ArcGISApp1.Controls.SymbolFormCSY"
+             mc:Ignorable="d" 
+             d:DesignHeight="260" d:DesignWidth="300" Loaded="csyLine_Loaded">
+    <Grid Background="#FFE6F4F2">
+        <Border x:Name="myBorder" BorderBrush="#FF64B786" BorderThickness="1" Margin="40,19,40,60">
+            <StackPanel>
+                <WrapPanel Height="60">
+                    <Label x:Name="myTest" Content="线型" Width="70" Margin="4,16,4,16" Foreground="{Binding BorderBrush, ElementName=myBorder}" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                    <ComboBox x:Name="myLineSymbolStyleComboBox" Height="24" Width="100" SelectionChanged="myLineSymbolStyleComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Solid" Foreground="{Binding ElementName=myBorder, Path=BorderBrush}"/>
+                        <ComboBoxItem Content="Dash" Foreground="{Binding ElementName=myBorder, Path=BorderBrush}"/>
+                        <ComboBoxItem Content="Dot" Foreground="{Binding ElementName=myBorder, Path=BorderBrush}"/>
+                        <ComboBoxItem Content="DashDot" Foreground="{Binding ElementName=myBorder, Path=BorderBrush}"/>
+                        <ComboBoxItem Content="DashDotDot" Foreground="{Binding ElementName=myBorder, Path=BorderBrush}"/>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel Height="60">
+                    <Label Content="宽度" Width="70" Margin="4,16,4,16" Foreground="{Binding BorderBrush, ElementName=myBorder}" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                    <TextBox x:Name="myLineSymbolSizeTxtBox" input:InputMethod.IsInputMethodEnabled="False" BorderBrush="{Binding BorderBrush, ElementName=myBorder}" BorderThickness="1" Height="8" Width="100" Margin="0,0,30,0" PreviewTextInput="myLineSymbolSizeTxtBox_PreviewTextInput"/>
+                </WrapPanel>
+                <WrapPanel Height="60">
+                    <Label Content="颜色" Width="70" Margin="4,16,4,16" Foreground="{Binding BorderBrush, ElementName=myBorder}" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                    <Button x:Name="myLineSymbolColorBox" HorizontalAlignment="Left" Margin="0,15,30,0" VerticalAlignment="Top" Height="24" Width="100" Background="#FF7AB6C8" Click="myLineSymbolColorBox_Click"/>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+        <Button x:Name="myLineSymbolSureBtn" Content="确认" HorizontalAlignment="Left" Margin="40,220,0,0" VerticalAlignment="Top" Width="75" Foreground="{Binding ElementName=myBorder, Path=BorderBrush}" Click="myLineSymbolSureBtn_Click"/>
+        <Button x:Name="myLineSymbolCancelBtn" Content="取消" HorizontalAlignment="Left" Margin="185,220,30,0" VerticalAlignment="Top" Width="75" Foreground="{Binding ElementName=myBorder, Path=BorderBrush}" Click="myLineSymbolCancelBtn_Click"/>
+    </Grid>
+</UserControl>

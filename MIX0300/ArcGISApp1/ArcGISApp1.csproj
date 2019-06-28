@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2916A721-07AC-4D69-8EAC-024362BD841B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArcGISApp1</RootNamespace>
+    <AssemblyName>ArcGISApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Esri.ArcGISRuntime, Version=100.3.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Esri.ArcGISRuntime.WPF.100.3.0\lib\net461\Esri.ArcGISRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Esri.ArcGISRuntime.LocalServices">
+      <HintPath>..\packages\Esri.ArcGISRuntime.LocalServices.100.0.0\lib\net452\Esri.ArcGISRuntime.LocalServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Esri.ArcGISRuntime.Toolkit, Version=100.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Esri.ArcGISRuntime.Toolkit.100.3.0-beta4\lib\net461\Esri.ArcGISRuntime.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\DataChangeCsy\DBF2ExcelCsy.xaml.cs">
+      <DependentUpon>DBF2ExcelCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataChangeCsy\Feature2RasterCsy.xaml.cs">
+      <DependentUpon>Feature2RasterCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataChangeCsy\Raster2PolygonCsy.xaml.cs">
+      <DependentUpon>Raster2PolygonCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\ConFunctionCsy.xaml.cs">
+      <DependentUpon>ConFunctionCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\FillHydroCsy.xaml.cs">
+      <DependentUpon>FillHydroCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\FlowCountCsy.xaml.cs">
+      <DependentUpon>FlowCountCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\FlowDirCsy.xaml.cs">
+      <DependentUpon>FlowDirCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\Stream2FeatureCsy.xaml.cs">
+      <DependentUpon>Stream2FeatureCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\StreamLevelCsy.xaml.cs">
+      <DependentUpon>StreamLevelCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\streamLink1.xaml.cs">
+      <DependentUpon>streamLink1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\WaterShed.xaml.cs">
+      <DependentUpon>WaterShed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Hydrology\ZonalStatisticsCsy.xaml.cs">
+      <DependentUpon>ZonalStatisticsCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\ArcgisOnlineMap.xaml.cs">
+      <DependentUpon>ArcgisOnlineMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\AttrSearchCsy.xaml.cs">
+      <DependentUpon>AttrSearchCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\AttrSearchCyk.xaml.cs">
+      <DependentUpon>AttrSearchCyk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\FeatureEditCsy.xaml.cs">
+      <DependentUpon>FeatureEditCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\GeometryCalcuCyk.xaml.cs">
+      <DependentUpon>GeometryCalcuCyk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\GridCsy.xaml.cs">
+      <DependentUpon>GridCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\LabelDefinedCsy.xaml.cs">
+      <DependentUpon>LabelDefinedCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\MapViewTitleCsy.xaml.cs">
+      <DependentUpon>MapViewTitleCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\PythonCsy.xaml.cs">
+      <DependentUpon>PythonCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\RasterClipCsy.xaml.cs">
+      <DependentUpon>RasterClipCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OtherTool\UnionCsy.xaml.cs">
+      <DependentUpon>UnionCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Symbols\RasterRGBRenderCsy.xaml.cs">
+      <DependentUpon>RasterRGBRenderCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Symbols\ShpUniqueRenderCsy.xaml.cs">
+      <DependentUpon>ShpUniqueRenderCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DelSameValue.cs" />
+    <Compile Include="Utils\GetChildNode.cs" />
+    <Compile Include="Utils\RemoveAllEvent.cs" />
+    <Compile Include="Utils\ShapefileAttribution.cs" />
+    <Compile Include="Utils\SnapShot.cs" />
+    <Page Include="Controls\DataChangeCsy\DBF2ExcelCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataChangeCsy\Feature2RasterCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataChangeCsy\Raster2PolygonCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DrawAndEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FeatureTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\ConFunctionCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\FillHydroCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\FlowCountCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\FlowDirCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\Stream2FeatureCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\StreamLevelCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\streamLink1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\WaterShed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Hydrology\ZonalStatisticsCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Measure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\myTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\ArcgisOnlineMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\AttrSearchCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\AttrSearchCyk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\FeatureEditCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\GeometryCalcuCyk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\GridCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\LabelDefinedCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\MapViewTitleCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\PythonCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\RasterClipCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OtherTool\UnionCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\QuickStartTools.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SymbolFormCSY\FillCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SymbolFormCSY\LineCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SymbolFormCSY\PointCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TableOfContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\DrawAndEdit.xaml.cs">
+      <DependentUpon>DrawAndEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FeatureTable.xaml.cs">
+      <DependentUpon>FeatureTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Measure.xaml.cs">
+      <DependentUpon>Measure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myTest.xaml.cs">
+      <DependentUpon>myTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QuickStartTools.xaml.cs">
+      <DependentUpon>QuickStartTools.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SymbolFormCSY\FillCsy.xaml.cs">
+      <DependentUpon>FillCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SymbolFormCSY\LineCsy.xaml.cs">
+      <DependentUpon>LineCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SymbolFormCSY\PointCsy.xaml.cs">
+      <DependentUpon>PointCsy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TableOfContent.xaml.cs">
+      <DependentUpon>TableOfContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Symbols\FillSymbolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Symbols\FillSymbolForm.Designer.cs">
+      <DependentUpon>FillSymbolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Symbols\LineSymbolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Symbols\LineSymbolForm.Designer.cs">
+      <DependentUpon>LineSymbolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MapViewModel.cs" />
+    <Page Include="Symbols\RasterRGBRenderCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Symbols\ShpUniqueRenderCsy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Symbols\PointSymbolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Symbols\PointSymbolForm.Designer.cs">
+      <DependentUpon>PointSymbolForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="MyResources\changeMap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyResources\clearTools.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyResources\zoomIn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyResources\zoomOut.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Symbols\FillSymbolForm.resx">
+      <DependentUpon>FillSymbolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Symbols\LineSymbolForm.resx">
+      <DependentUpon>LineSymbolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Symbols\PointSymbolForm.resx">
+      <DependentUpon>PointSymbolForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Resource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <None Include="MyResources\con1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="MyResources\clean.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyResources\eraser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyResources\feature2raster1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="MyResources\fill3.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="MyResources\flow1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="MyResources\flowCount1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="MyResources\raster2polygon1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="MyResources\rasterClip1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="MyResources\stream2Feature1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="MyResources\banClick.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyResources\selectMutil.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyResources\streamLink1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="MyResources\streamLevel1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="MyResources\table2Excel.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="MyResources\watershed1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="MyResources\zonalStatistics1.gpk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MyResources\eagleEye.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MyResources\myGP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\Esri.ArcGISRuntime.WPF.100.3.0\build\net461\Esri.ArcGISRuntime.WPF.targets" Condition="Exists('packages\Esri.ArcGISRuntime.WPF.100.3.0\build\net461\Esri.ArcGISRuntime.WPF.targets')" />
+  <Import Project="..\packages\Esri.ArcGISRuntime.WPF.100.3.0\build\net461\Esri.ArcGISRuntime.WPF.targets" Condition="Exists('..\packages\Esri.ArcGISRuntime.WPF.100.3.0\build\net461\Esri.ArcGISRuntime.WPF.targets')" />
+  <!-- <Import Project="..\packages\Esri.ArcGISRuntime.LocalServices.100.3.0\build\net461\Esri.ArcGISRuntime.LocalServices.targets" Condition="Exists('..\packages\Esri.ArcGISRuntime.LocalServices.100.3.0\build\net461\Esri.ArcGISRuntime.LocalServices.targets')" /> -->
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <!-- <Error Condition="!Exists('..\packages\Esri.ArcGISRuntime.LocalServices.100.3.0\build\net461\Esri.ArcGISRuntime.LocalServices.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Esri.ArcGISRuntime.LocalServices.100.3.0\build\net461\Esri.ArcGISRuntime.LocalServices.targets'))" /> -->
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="ArcGISApp1.Symbols.ShpUniqueRenderCsy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArcGISApp1.Symbols"
+             mc:Ignorable="d" 
+             d:DesignHeight="33" d:DesignWidth="560" Loaded="UserControl_Loaded" ToolTip="唯一值渲染">
+    <WrapPanel Background="#FFE6F4F2">
+        <Button x:Name="startBtn" Content="开始编辑" Height="20" Width="65" Padding="0" Margin="5,2,0,2" Click="startBtn_Click"/>
+        <Label Content="选择属性字段" Height="20" Width="65" Padding="0" Margin="9,9,0,2" FontSize="10"/>
+        <ComboBox x:Name="fieldComboBox" Height="20" Width="100" Margin="5,2,0,2" SelectionChanged="fieldComboBox_SelectionChanged" IsEnabled="False"/>
+        <Label Content="划分等级" Height="20" Width="45" Padding="0" Margin="9,9,0,2" FontSize="10"/>
+        <ComboBox x:Name="levelComboBox" Height="20" Width="100" Margin="5,2,0,2" SelectionChanged="levelComboBox_SelectionChanged" SelectedIndex="0">
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+        </ComboBox>
+        <Button x:Name="renderBtn" Content="渲染" Height="20" Width="65" Padding="0" Margin="5,2,0,2" Click="renderBtn_Click" IsEnabled="False"/>
+        <Button x:Name="hideBtn" Content="隐藏" Height="20" Width="65" Padding="0" Margin="5,2,0,2" Click="hideBtn_Click"/>
+    </WrapPanel>
+</UserControl>

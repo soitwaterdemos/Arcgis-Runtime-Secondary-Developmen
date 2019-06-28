@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="ArcGISApp1.Controls.OtherTool.GeometryCalcuCyk"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013" 
+             xmlns:local="clr-namespace:ArcGISApp1.Controls.OtherTool"
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="430" Loaded="UserControl_Loaded" ToolTip="几何操作工具" x:Name="myUserControl">
+    <StackPanel >
+        <Menu FontSize="10" Height="25">
+            <MenuItem x:Name="DrawPointMenuItem" Header="画点" Click="DrawPointMenuItem_Click" Width="40" Margin="5,0,0,0"/>
+            <MenuItem x:Name="DrawPolylineMenuItem" Header="画线" Click="DrawPolylineMenuItem_Click" Width="40" Margin="5,0,0,0"/>
+            <MenuItem x:Name="DrawPolygonMenuItem" Header="画面" Click="DrawPolygonMenuItem_Click" Width="40" Margin="5,0,0,0"/>
+            <MenuItem x:Name="ClearAllMenuItem" Header="清空画布" Click="ClearAllMenuItem_Click" Width="54" Margin="5,0,0,0"/>
+            <MenuItem x:Name="EditVertexMenuItem" Header="编辑折点" Click="EditVertexMenuItem_Click" Width="54" Margin="5,0,0,0"/>
+            <MenuItem x:Name="UneditVertexMenuItem" Header="停止编辑" Click="UneditVertexMenuItem_Click"  Width="54" Margin="5,0,0,0"/>
+            <MenuItem Header="几何操作▼"  Width="64" Margin="5,0,0,0">
+                <MenuItem x:Name="BufferMenuItem" Header="缓冲区" Click="BufferMenuItem_Click"/>
+                <MenuItem x:Name="ClipMenuItem" Header="交集" Click="ClipMenuItem_Click" ToolTip="求两个面要素的交集"/>
+                <MenuItem x:Name="CutMenuItem" Header="剪切" Click="CutMenuItem_Click" ToolTip="线裁剪面"/>
+                <MenuItem x:Name="GeneralizeMenuItem" Header="简化" Click="GeneralizeMenuItem_Click" Visibility="Collapsed"/>
+                <MenuItem x:Name="IntersectionMenuItem" Header="交点" Click="IntersectionMenuItem_Click"/>
+                <MenuItem x:Name="SimplifyMenuItem" Header="拓扑检查" Click="SimplifyMenuItem_Click" Visibility="Collapsed"/>
+                <MenuItem x:Name="UnionMenuItem" Header="联合" Click="UnionMenuItem_Click" ToolTip=""/>
+            </MenuItem>
+            <MenuItem x:Name="exitTool" Header="退出" Width="40" Margin="5,0,0,0" Click="exitTool_Click"/>
+        </Menu>
+        <!--<Separator/>-->
+        <WrapPanel Background="White" Height="33">
+            <Button x:Name="add2SHPStart" Content="启动SHP编辑" ToolTip="编辑shapefile图层中的要素" Click="add2SHPStart_Click" Height="30" Margin="1" FontSize="10"/>
+            <ComboBox Width="100" x:Name="layersComboBox" IsEnabled="False" SelectionChanged="layersComboBox_SelectionChanged" ToolTip="选择目标图层" FontSize="10" Height="30"/>
+
+            <Button Width="60" Margin="1" x:Name="choose2SHP" Content="选择要素" IsEnabled="False" Click="choose2SHP_Click" ToolTip="每一次选择要素都需要点击一次&quot;选择&quot;按钮" Height="30" FontSize="10"/>
+            <Button Width="60" Margin="1" x:Name="add2SHP" Content="添加所选" IsEnabled="False" Click="add2SHP_Click" Height="30" FontSize="10"/>
+            <Button Width="60" Margin="1" x:Name="edit2SHP" Content="编辑所选" IsEnabled="False" Click="edit2SHP_Click" Height="30" FontSize="10"/>
+            <Button Width="60" Margin="1" x:Name="delete2SHP" Content="删除所选" IsEnabled="False" Click="delete2SHP_Click" Height="30" FontSize="10"/>
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

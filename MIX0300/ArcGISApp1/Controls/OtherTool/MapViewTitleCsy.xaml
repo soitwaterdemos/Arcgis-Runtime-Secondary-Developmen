@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="ArcGISApp1.Controls.OtherTool.MapViewTitleCsy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:input="clr-namespace:System.Windows.Input;assembly=PresentationCore"
+             xmlns:local="clr-namespace:ArcGISApp1.Controls.OtherTool"
+             mc:Ignorable="d" 
+             d:DesignHeight="220" d:DesignWidth="180" x:Name="myUserControl" Loaded="myUserControl_Loaded" ToolTip="图名设置">
+    <StackPanel Background="#FFE6F4F2">
+        <Button Content="添加图名" x:Name="AddMapName" Click="AddMapName_Click" Margin="0,2,0,5"/>
+        <WrapPanel>
+        <StackPanel>
+            <Label Content="字体大小" Height="26" Margin="2"/>
+            <Label Content="字体粗细" Height="26" Margin="2"/>
+            <Label Content="字体颜色" Height="26" Margin="2"/>
+            <Label Content="透明背景" Height="26" Margin="2"/>
+            <Label Content="背景颜色" Height="26" Margin="2"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBox x:Name="fontSize" Height="26" Width="100" PreviewTextInput="fontSize_PreviewTextInput" input:InputMethod.IsInputMethodEnabled="False"/>
+            <ComboBox x:Name="fontWeight" Margin="0,5" Height="26">
+                <ComboBoxItem Content="Normal"/>
+                <ComboBoxItem Content="Thin"/>
+                <ComboBoxItem Content="Bold"/>
+            </ComboBox>
+            <Button x:Name="fontColor"  Margin="0,5" Height="26" Background="#FF7AB6C8" Click="fontColor_Click" />
+            <CheckBox x:Name="fontOpacity" Margin="0,0,0,0" Height="26" Checked="fontOpacity_Checked" Unchecked="fontOpacity_Unchecked"/>
+                <Button x:Name="bgColor" Height="26" Click="bgColor_Click" Background="#FF7AB6C8"/>
+        </StackPanel>
+        
+    </WrapPanel>
+        <Button x:Name="sureBtn" Content="应用" Click="sureBtn_Click" Margin="0,5"/>
+    </StackPanel>
+</UserControl>

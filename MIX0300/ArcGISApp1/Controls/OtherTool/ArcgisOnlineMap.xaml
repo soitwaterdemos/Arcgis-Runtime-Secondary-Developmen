@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="ArcGISApp1.Controls.OtherTool.ArcgisOnlineMap"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArcGISApp1.Controls.OtherTool"
+             mc:Ignorable="d" 
+             d:DesignHeight="95" d:DesignWidth="740" Loaded="UserControl_Loaded">
+    <StackPanel Background="#FFE6F4F2">
+        <WrapPanel>
+            <TextBox x:Name="inUrl" Text = "" Height="20" Width="600" Padding="0" Margin="10,5,0,0" Background="White"/>
+            <Button x:Name="sureBtn" Content="载入" Height="20" Width="45" Padding="0" Margin="10,5,0,0" Click="sureBtn_Click"/>
+            <Button x:Name="hideBtn" Content="隐藏" Height="20" Width="45" Padding="0" Margin="20,5,0,0" Click="hideBtn_Click"/>
+        </WrapPanel>
+        <WrapPanel>
+            <Button Content="所输入URL格式如下：" Height="20" Width="100" Padding="0" Margin="10,5,0,5"/>
+        </WrapPanel>
+        <WrapPanel>
+            <TextBlock x:Name="myUrl" Text = "https://www.arcgis.com/home/webmap/viewer.html?webmap=2cc6d640d36d465ca32f1a20767d7d39" Height="20" Width="600" Padding="0" Margin="10,0,0,0" Background="White"/>
+            <Button x:Name="seeBtn" Content="在浏览器中查看本示例" Height="18" Width="110" Padding="0" Margin="10,0,0,0" Click="seeBtn_Click"/>
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

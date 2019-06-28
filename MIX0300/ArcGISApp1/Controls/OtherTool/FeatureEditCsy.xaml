@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ArcGISApp1.Controls.OtherTool.FeatureEditCsy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArcGISApp1.Controls.OtherTool"
+             mc:Ignorable="d" 
+             d:DesignHeight="35" d:DesignWidth="8000" Loaded="UserControl_Loaded">
+    <WrapPanel Background="#FFE6F4F2">
+        <TextBlock Text="绘制：" Margin="20,10,0,0"/>
+        <RadioButton x:Name="drawPoint" Content="点" Margin="5,5,0,0" GroupName="draw"/>
+        <RadioButton x:Name="drawLine" Content="线" Margin="5,5,0,0" GroupName="draw"/>
+        <RadioButton x:Name="drawPoly" Content="面" Margin="5,5,0,0" GroupName="draw"/>
+
+        <Button x:Name="addBtn" Content="添加" Height="20" Width="45" Padding="0" Margin="15,5,0,0" Click="addBtn_Click" FontSize="9"/>
+        <Button x:Name="chooseBtn" Content="选择" Height="20" Width="45" Padding="0" Margin="5,5,0,0" Click="chooseBtn_Click" FontSize="9"/>
+        
+        <Button x:Name="EditVertexMenuItem" Content="编辑" Height="20" Width="45" Padding="0" Margin="5,5,0,0" Click="EditVertexMenuItem_Click" FontSize="9"/>
+        <Button x:Name="UneditVertexMenuItem" Content="保存" Height="20" Width="45" Padding="0" Margin="5,5,0,0" Click="UneditVertexMenuItem_Click" FontSize="9"/>
+
+        <Button x:Name="deleteBtn" Content="删除" Height="20" Width="45" Padding="0" Margin="5,5,0,0" Click="deleteBtn_Click" FontSize="9"/>
+        <Button x:Name="hideBtn" Content="隐藏" Height="20" Width="45" Padding="0" Margin="5,5,0,0" Click="hideBtn_Click" FontSize="9"/>
+    </WrapPanel>
+</UserControl>

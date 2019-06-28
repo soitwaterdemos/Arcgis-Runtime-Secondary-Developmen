@@ -1,0 +1,40 @@
+﻿<UserControl x:Name="myUserControl" x:Class="ArcGISApp1.Controls.QuickStartTools"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArcGISApp1.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="50" Loaded="myUserControl_Loaded">
+    <Grid>
+        <StackPanel x:Name="myQuickStartTools" HorizontalAlignment="Left" Height="{Binding ElementName=myUserControl, Path=Height}" VerticalAlignment="Top" Width="{Binding ElementName=myUserControl, Path=Width}" Background="#FFE6F4F2">
+            <Button x:Name="eagleEyeCsy" Background="{x:Null}" BorderThickness="0" Click="eagleEyeCsy_Click" ToolTip="打开鹰眼地图" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/eagleEye.png"/>
+            </Button>
+            <Button x:Name="zoomOutCsy" Background="{x:Null}" BorderThickness="0" Click="zoomOutCsy_Click" ToolTip="地图放大" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/zoomOut.png"/>
+            </Button>
+            <Button x:Name="zoomInCsy" Background="{x:Null}" BorderThickness="0" Click="zoomInCsy_Click" ToolTip="地图缩进" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/zoomIn.png"/>
+            </Button>
+            <Button x:Name="dragSelectCsy" Background="{x:Null}" BorderThickness="0" Click="dragSelectCsy_Click" ToolTip="启动要素多选" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/selectMutil.png"/>
+            </Button>
+            <Button x:Name="cleanSelectCsy" Background="{x:Null}" BorderThickness="0" Click="cleanSelectCsy_Click" ToolTip="清除要素选择" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/clean.png"/>
+            </Button>
+            <Button x:Name="changeMapCsy" Background="{x:Null}" BorderThickness="0" Click="changeMapCsy_Click" ToolTip="切换数据打开模式(读写/只读)" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/changeMap.png"/>
+            </Button>
+            <Button x:Name="cleanGraphicCsy" Background="{x:Null}" BorderThickness="0" Click="cleanGraphicCsy_Click" ToolTip="移除绘制图层" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/eraser.png"/>
+            </Button>
+            <Button x:Name="clearToolsCsy" Background="{x:Null}" BorderThickness="0" Click="clearToolsCsy_Click" ToolTip="移除所有工具条" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/clearTools.png"/>
+            </Button>
+            <Button x:Name="openGpCsy" Background="{x:Null}" BorderThickness="0" Click="openGpCsy_Click" ToolTip="启动LocalServer" Focusable="False" Margin="0,0,0,5">
+                <Image Source="pack://application:,,,/MyResources/myGP.png"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

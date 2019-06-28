@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ArcGISApp1.Controls.OtherTool.AttrSearchCyk"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArcGISApp1.Controls.OtherTool"
+             mc:Ignorable="d" 
+             d:DesignHeight="280" d:DesignWidth="600" x:Name="myUserControl" Loaded="myUserControl_Loaded">
+    <StackPanel Background="#FFE6F4F2">
+        <WrapPanel HorizontalAlignment="Center">
+            <Label x:Name="myLabel" Height="32" Width="90" BorderBrush="#FF64B786" BorderThickness="1" Padding="8,2,2,10" Margin="50,10,5,5">
+                <Label Content="选择目标图层" Height="26" Width="112" Padding="0,4" Foreground="{Binding ElementName=myLabel, Path=BorderBrush}" FontWeight="Bold"/>
+            </Label>
+            <ComboBox x:Name="myLayerComboBox" Width="240" Height="32" SelectionChanged="myLayerComboBox_SelectionChanged">
+                <ComboBoxItem Content="矢量"/>
+            </ComboBox>
+        </WrapPanel>
+        <Separator/>
+        <WrapPanel Height="180">
+            <ListBox Width="180" Margin="10"></ListBox>
+            <Border Width="200"  Margin="0,10" Height="160" BorderBrush="{Binding ElementName=myLabel, Path=BorderBrush}" BorderThickness="1">
+                <WrapPanel>
+                    
+                </WrapPanel>
+            </Border>
+            <ListBox Width="180" Margin="10"></ListBox>
+        </WrapPanel>
+        <Separator/>
+        <WrapPanel>
+            <Button x:Name="OkBtn" Content="确认"  Margin="100,5,0,0" Width="100" Foreground="{Binding ElementName=myLabel, Path=BorderBrush}"/>
+            <Button x:Name="CancelBtn" Content="取消"  Margin="200,5,0,0" Width="100" Foreground="{Binding ElementName=myLabel, Path=BorderBrush}"/>
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

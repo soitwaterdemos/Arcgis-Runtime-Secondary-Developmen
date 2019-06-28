@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ArcGISApp1.Controls.OtherTool.GridCsy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArcGISApp1.Controls.OtherTool"
+             mc:Ignorable="d" 
+             d:DesignHeight="240" d:DesignWidth="200" x:Name="myUserControl" Loaded="myUserControl_Loaded">
+    <StackPanel Background="#FFE6F4F2">
+    <WrapPanel>
+        <StackPanel>
+            <Label Content="格网类型"/>
+            <Label Content="显示格网"/>
+            <Label Content="显示标注"/>
+            <Label Content="格网颜色"/>
+            <Label Content="标注颜色"/>
+            <Label Content="阴影颜色" />
+            <Label Content="标注位置"/>
+            <Label Content="标注格式"/>
+        </StackPanel>
+            <StackPanel>
+                <ComboBox x:Name="GridTypeCombo"/>
+                <CheckBox x:Name="GridVisibilityCheckbox" IsChecked="True" Margin="5"/>
+                <CheckBox x:Name="LabelVisibilityCheckbox" IsChecked="True" Margin="5"/>
+                <ComboBox x:Name="GridColorCombo"/>
+                <ComboBox x:Name="LabelColorCombo"/>
+                <ComboBox x:Name="HaloColorCombo"/>
+                <ComboBox x:Name="LabelPositionCombo"/>
+                <ComboBox x:Name="LabelFormatCombo"/>
+            </StackPanel>
+        </WrapPanel>
+        <Button x:Name="ApplySettingsButton" Content="应用" Click="ApplySettingsButton_Click" />
+    </StackPanel>
+</UserControl>

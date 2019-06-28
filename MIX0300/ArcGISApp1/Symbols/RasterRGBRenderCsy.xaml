@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="ArcGISApp1.Symbols.RasterRGBRenderCsy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArcGISApp1.Symbols"
+             mc:Ignorable="d" 
+             d:DesignHeight="240" d:DesignWidth="305" x:Name="myUserControl" Loaded="myUserControl_Loaded">
+    <StackPanel Background="#FFE6F4F2">
+        <WrapPanel>
+            <Button Content="渲染方式" Width="60" Margin="0,0,2,0"/>
+            <RadioButton Content="RGB" GroupName="method" Checked="RadioButton_Checked"/>
+            <RadioButton Content="Stretch" GroupName="method" Margin="4,0,0,0" Checked="RadioButton_Checked_1"/>
+        </WrapPanel>
+        <WrapPanel>
+            <Button Content="渲染类型" Width="60" Margin="0,2,2,0"/>
+            <ComboBox x:Name="StretchTypeComboBox" SelectionChanged="StretchTypeComboBox_SelectionChanged" ToolTip="栅格渲染工具" Width="240">
+            </ComboBox>
+        </WrapPanel>
+        
+        <StackPanel Visibility="Visible" Margin="0,2,2,0" Height="70">
+            <StackPanel x:Name="MinMaxParametersGrid" Visibility="Collapsed" Height="70">
+                <WrapPanel Margin="0,2,0,2">
+                    <Button Content="最小值"  Width="60" Margin="0,2,0,2" />
+                    <ComboBox x:Name="MinRedComboBox" Foreground="Red"  Margin="2,2,0,2" Width="78"/>
+                    <ComboBox x:Name="MinGreenComboBox" Foreground="Green"  Margin="2,2,0,2" Width="78"/>
+                    <ComboBox x:Name="MinBlueComboBox" Foreground="Blue"  Margin="2,2,0,2" Width="78"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,2,0,2">
+                    <Button Content="最大值" Width="60" Margin="0,2,0,2"/>
+                    <ComboBox x:Name="MaxRedComboBox" Foreground="Red" Margin="2,2,0,2" Width="78"/>
+                    <ComboBox x:Name="MaxGreenComboBox" Foreground="Green" Margin="2,2,0,2" Width="78"/>
+                    <ComboBox x:Name="MaxBlueComboBox" Foreground="Blue" Margin="2,2,0,2" Width="78"/>
+                </WrapPanel>
+            </StackPanel>
+            <StackPanel x:Name="PercentClipParametersGrid" Visibility="Visible" Height="70">
+                <WrapPanel>
+                    <Button Content="最小百分比"  Width="60" Margin="0,8,0,2" />
+                    <ComboBox x:Name="MinimumValueSlider"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <Button Content="最大百分比"/>
+                    <ComboBox x:Name="MaximumValueSlider"/>
+                </WrapPanel>
+            </StackPanel>
+            <StackPanel x:Name="StdDeviationParametersGrid" Visibility="Collapsed" Height="70">
+                <WrapPanel>
+                    <Button Content="Factor"  Width="60" Margin="0,20,0,2" />
+                    <ComboBox x:Name="StdDeviationFactorComboBox" Margin="2,20,0,0" Width="240"/>
+                </WrapPanel>
+            </StackPanel>
+        </StackPanel>
+        <WrapPanel x:Name="stretchItem" IsEnabled="False" Margin="0,2,0,5">
+            <WrapPanel>
+                <Button Content="预设色带"  Width="60" Margin="0,8,2,2" />
+                <ComboBox x:Name="ColorRampCsy" Width="240" Margin="0,8,2,2">
+                    <ComboBoxItem Content="None"/>
+                    <ComboBoxItem Content="Elevation"/>
+                    <ComboBoxItem Content="DemScreen"/>
+                    <ComboBoxItem Content="DemLight"/>
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel>
+                <Button Content="色带大小"  Width="60" Margin="0,8,2,2" />
+                <ComboBox x:Name="ColorRampSizeCsy" Width="240" Margin="0,8,2,2"/>
+            </WrapPanel>
+        </WrapPanel>
+        <WrapPanel Margin="0,2,0,0">
+            <Button x:Name="ApplyRgbRendererButton" Margin="0,0,0,0" Width="150" Content="应用" Click="ApplyRgbRendererButton_Click" />
+            <Button x:Name="HideButton" Margin="5,0,0,0" Width="145" Content="隐藏" Click="HideButton_Click" />
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

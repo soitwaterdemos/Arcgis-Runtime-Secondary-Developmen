@@ -1,0 +1,218 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:esri="http://schemas.esri.com/arcgis/runtime/2013"
+        xmlns:local="clr-namespace:ArcGISApp1"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:myusercontrol="clr-namespace:ArcGISApp1.Controls"
+        xmlns:myusercontrolSymbol="clr-namespace:ArcGISApp1.Symbols"
+        xmlns:myusercontrolHydro="clr-namespace:ArcGISApp1.Controls.Hydrology"
+        xmlns:myusercontrolDataChange="clr-namespace:ArcGISApp1.Controls.DataChangeCsy"
+        xmlns:myusercontrolOtherTool="clr-namespace:ArcGISApp1.Controls.OtherTool"
+        xmlns:Forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" x:Name="myApp" 
+        x:Class="ArcGISApp1.MainWindow"
+        mc:Ignorable="d"
+        Title="ArcGIS-EX-XXXXXXXXXXXX" Height="700" Width="1150" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="myApp_Closing">
+    <Window.Resources>
+        <local:MapViewModel x:Key="MapViewModel" />
+        <SolidColorBrush x:Key="FontColorCsy" Color="#FF64B786" />
+        <SolidColorBrush x:Key="OpacityColorCsy" Color="#cc64B786" />
+        <SolidColorBrush x:Key="BackgroundColorCsy" Color="#FFE6F4F2"/>
+    </Window.Resources>
+    <Viewbox Stretch="Fill">
+        <Canvas Height="700" Width="1150">
+            <!--视图层-->
+            <StackPanel Canvas.Left="0">
+                <Menu x:Name="myMenu" HorizontalAlignment="Left" VerticalAlignment="Top"  HorizontalContentAlignment="Center" Width="1150" Height="30" FontSize="12" BorderBrush="{StaticResource FontColorCsy}" Foreground="{StaticResource FontColorCsy}" BorderThickness="0,0,0,1">
+                    <MenuItem Header="数据">
+                        <MenuItem x:Name="AddSHP" Header="导入Shapefile(读写)" Click="AddSHP_Click"/>
+                        <MenuItem x:Name="AddRaster" Header="导入Raster(读写)" Click="AddRaster_Click" />
+                        <MenuItem x:Name="AddGeodatabase" Header="导入Geodatabase(只读)" Click="AddGeodatabase_Click"/>
+                        <MenuItem x:Name="AddArcGISonline" Header="导入ArcGIS Online数据(只读)" Click="AddArcGISonline_Click"/>
+                        <MenuItem x:Name="ExportImage" Header="导出地图(JPG)" Click="ExportImage_Click" />
+                        <MenuItem x:Name="ExportImageMix" Header="导出制图(JPG)" Click="ExportImageMix_Click" />
+                    </MenuItem>
+                    <MenuItem Header="地图制图">
+                        <MenuItem x:Name="ChangeBaseMap" Header="切换底图">
+                            <ListBox x:Name="ChangeBaseMap_list" SelectionChanged="ChangeBaseMap_list_SelectionChanged" Width="150"></ListBox>
+                        </MenuItem>
+                        <MenuItem Header="指南针" x:Name="openCompass" Click="openCompass_Click"></MenuItem>
+                        <MenuItem Header="格网" x:Name="openGrid" Click="openGrid_Click"/>
+                        <MenuItem Header="图名" x:Name="openTitle" Click="openTitle_Click"/>
+                        <MenuItem Header="比例尺" x:Name="openScaleLine" Click="openScaleLine_Click"></MenuItem>
+                        <MenuItem Header="图例" x:Name="openLegend" ToolTip="重新打开图例可重载图例" Click="openLegend_Click"/>
+                        <MenuItem Header="图层图例" x:Name="openLayerLegend" Click="openLayerLegend_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="编辑工具">
+                        <MenuItem x:Name="btn_DrawAndEdit" Header="草图编辑工具" Click="btn_DrawAndEdit_Click"/>
+                        <MenuItem x:Name="btn_MeasureArcGIS" Header="测量工具(Toolkit)" Click="btn_MeasureArcGIS_Click" />
+                        <MenuItem x:Name="btn_Measure" Header="测量工具(SDK)" Click="btn_Measure_Click" />
+                        <MenuItem x:Name="btn_RasterClip" Header="栅格裁剪工具" Click="btn_RasterClip_Click" IsEnabled="False"/>
+                        <MenuItem x:Name="btn_GeometryCalcuEditCky" Header="几何操作与要素编辑" Click="btn_GeometryCalcuEditCky_Click"/>
+                    </MenuItem>
+                    <MenuItem x:Name="HydrologyCsy" Header="水文分析">
+                        <MenuItem x:Name="fillHydrology" Header="填洼" Click="fillHydrology_Click" IsEnabled="False"/>
+                        <MenuItem x:Name="flowDirHydrology" Header="流向" Click="flowDirHydrology_Click" IsEnabled="False"/>
+                        <MenuItem x:Name="flowCountHydrology" Header="流量" Click="flowCountHydrology_Click" IsEnabled="False"/>
+                        <MenuItem x:Name="conFucHydrology" Header="条件函数Con" Click="conFucHydrology_Click" IsEnabled="False"/>
+                        <MenuItem x:Name="stream2FeatureHydrology" Header="栅格河网矢量化" Click="stream2FeatureHydrology_Click" IsEnabled="False"/>
+                        <MenuItem x:Name="waterShedHydrology" Header="分水岭" Click="waterShedHydrology_Click" IsEnabled="False" />
+                        <MenuItem x:Name="streamLinkHydrology" Header="河网连接" Click="streamLinkHydrology_Click" IsEnabled="False" />
+                        <MenuItem x:Name="streamLevelHydrology" Header="河网分级" Click="streamLevelHydrology_Click" IsEnabled="False" />
+                        <MenuItem x:Name="zonalStatisticsHydrology" Header="分区统计" Click="zonalStatisticsHydrology_Click" IsEnabled="False" />
+                    </MenuItem>
+                    <MenuItem x:Name="DataFormatChangeCsy" Header="格式转换">
+                        <MenuItem x:Name="Raster2Polygon" Header="栅格转面" Click="Raster2Polygon_Click" IsEnabled="False"/>
+                        <MenuItem x:Name="Feature2Raster" Header="要素转栅格" Click="Feature2Raster_Click" IsEnabled="False"/>
+                        <MenuItem x:Name="DBF2Excel" Header="表转Excel" Click="DBF2Excel_Click" IsEnabled="False"/>
+                    </MenuItem>
+                    <MenuItem Header="其他">
+                        <MenuItem x:Name="AddArcGISOnlineMap" Header="EX2 : 导入ArcGIS Online 地图" Click="AddArcGISOnlineMap_Click"/>
+                        <MenuItem x:Name="AddPy" Header="使用外部Python脚本" Click="AddPy_Click"/>
+                        <MenuItem x:Name="myTestBtn" Header="测试用" Click="myTestBtn_Click" Visibility="Collapsed"/>
+                        <MenuItem x:Name="myTestBtn2" Header="测试用2" Click="myTestBtn2_Click" Visibility="Collapsed"/>
+                        <MenuItem x:Name="myTestBtn3" Header="测试用3" Click="myTestBtn3_Click" Visibility="Collapsed"/>
+                    </MenuItem>
+                    <MenuItem Header="帮助" x:Name="myHelp" Click="myHelp_Click"/>
+                </Menu>
+                <WrapPanel>
+                    <myusercontrol:QuickStartTools x:Name="myQuickStartTools" Height="640" Width="30" Background="#FFBA2727" Margin="0,0,0,0"/>
+                    <myusercontrol:TableOfContent x:Name="myTableOfContent" Margin="0,0,0,0" Background="#FF000000" Width="150" Height="{Binding Height, ElementName=myQuickStartTools}"/>
+                    <Canvas>
+                        <Grid x:Name="myMapViewGrid">
+                            <esri:MapView x:Name="myMapView" Map="{Binding Map, Source={StaticResource MapViewModel}}"  ViewpointChanged="myMapView_ViewpointChanged"  Width="970" Height="{Binding Height, ElementName=myQuickStartTools}"/>
+                            <Rectangle x:Name="dragSelectRectangle"  StrokeThickness="3" Stroke="Yellow" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </Grid>
+                        <esri:MapView x:Name="myMapView2" Map="{Binding Map, Source={StaticResource MapViewModel}}" Width="970" Height="{Binding Height, ElementName=myQuickStartTools}" Visibility="Collapsed"/>
+                        <Thumb x:Name="mapTitle" Visibility="Collapsed" ToolTip="支持鼠标左键拖拽改变图名的定位." Width="20" Height="40" Cursor="Hand" Canvas.Left="400" Canvas.Top="0"  Background="{StaticResource FontColorCsy}" DragCompleted="mapTitle_DragCompleted" DragStarted="mapTitle_DragStarted" DragDelta="mapTitle_DragDelta" AllowDrop="True" FontSize="0.01"></Thumb>
+                        <TextBox Text="默认图名" Visibility="Collapsed"  Canvas.Left="420" Canvas.Top="0"  x:Name="myMapTitleTxt" FontSize="24" FontWeight="Bold" Background="{x:Null}"/>
+                        <Button Height="0" Width="0" Background="Black" x:Name="helpMargin" Canvas.Bottom="0" Canvas.Left="970"/>
+                    </Canvas>
+                </WrapPanel>
+            </StackPanel>
+            <!--叠加层-->
+            <StackPanel Canvas.Left="180" Canvas.Top="30">
+                <Canvas x:Name="userControlsLayoutCsy">
+                    <StackPanel Canvas.Left="0" Canvas.Top="0" x:Name="myDrawAndEdit" Visibility="Collapsed">
+                        <myusercontrol:DrawAndEdit/>
+                    </StackPanel>
+                    <StackPanel Canvas.Left="0" Canvas.Top="0"  x:Name="myMeasureArcGIS" Visibility="Collapsed">
+                        <esri:MeasureToolbar MapView="{Binding ElementName=myMapView}"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myMeasure" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrol:Measure/>
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroFill" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:FillHydroCsy />
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroFlowDir" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:FlowDirCsy />
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroFlowCount" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:FlowCountCsy Width="580"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroConFuc" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:ConFunctionCsy/>
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroStream2Featrue" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:Stream2FeatureCsy Width="580"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroWaterShed" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:WaterShed Width="580"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroStreamLink" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:streamLink1 Width="580"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroStreamLevel" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:StreamLevelCsy Width="580"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myHydroZonalStatistics" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolHydro:ZonalStatisticsCsy Width="580"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myDataRaster2Polygon" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolDataChange:Raster2PolygonCsy/>
+                    </StackPanel>
+                    <StackPanel x:Name="myDataFeature2Raster" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolDataChange:Feature2RasterCsy/>
+                    </StackPanel>
+                    <StackPanel x:Name="myDataDBF2Excel" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolDataChange:DBF2ExcelCsy/>
+                    </StackPanel>
+                    <StackPanel x:Name="myOtherRasterClip" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:RasterClipCsy Width="580"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myOtherAttrSearch" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:AttrSearchCsy Width="450"/>
+                    </StackPanel>
+                    <StackPanel x:Name="myOtherGrid" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:GridCsy Width="300"/>
+                    </StackPanel>
+                    <StackPanel x:Name="cykGeometryCalcuEdit" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:GeometryCalcuCyk Width="430"/>
+                    </StackPanel>
+                    <StackPanel x:Name="MapTitleTool" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:MapViewTitleCsy Width="180"/>
+                    </StackPanel>
+                    <StackPanel x:Name="UnionSHPTool" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:UnionCsy Width="160"/>
+                    </StackPanel>
+                    <StackPanel x:Name="AddLabelTool" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:LabelDefinedCsy/>
+                    </StackPanel>
+                    <StackPanel x:Name="AddPythonTool" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:PythonCsy Width="300"/>
+                    </StackPanel>
+                    <StackPanel x:Name="ArcgisOnlineMapPanel" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:ArcgisOnlineMap Width="740"/>
+                    </StackPanel>
+                    <StackPanel x:Name="FeatureEdit" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolOtherTool:FeatureEditCsy/>
+                    </StackPanel>
+                    <StackPanel x:Name="RasterRGBRenderCsy" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolSymbol:RasterRGBRenderCsy Width="305"/>
+                    </StackPanel>
+                    <StackPanel x:Name="SHPuniqueRenderCsy" Canvas.Left="0" Canvas.Top="0" Visibility="Collapsed">
+                        <myusercontrolSymbol:ShpUniqueRenderCsy/>
+                    </StackPanel>
+                    <esri:MapView x:Name="myMapView_Eagle"  Canvas.Left="0" Canvas.Top="400"  Height="230" Width="260" IsEnabled="False" BorderBrush="{StaticResource FontColorCsy}" BorderThickness="1" Visibility="Collapsed" />
+                </Canvas>
+            </StackPanel>
+            <!--其他设计-->
+            <Popup Name="myPopup" StaysOpen="False" AllowsTransparency="True" FlowDirection="LeftToRight" PopupAnimation="Fade" Placement="Mouse">
+                <DataGrid x:Name="myDataGrid" Width="Auto" Margin="6" Background="#FF64B786" BorderThickness="1">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding AttrKey}" Header="键"></DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding AttrValue}" Header="值"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Popup>
+            <StackPanel x:Name="myScaleLine" Width="260" Canvas.Bottom="50" Canvas.Right="0" Background="{StaticResource OpacityColorCsy}" Opacity="1" Visibility="Collapsed">
+                <WrapPanel>
+                    <TextBlock Text="基本比例尺" FontSize="10"/>
+                    <esri:ScaleLine MapScale="{Binding MapScale, ElementName=myMapView, Mode=OneWay}"/>
+                </WrapPanel>
+                <WrapPanel>
+                    <TextBlock Text="高级比例尺" FontSize="10"/>
+                    <esri:ScaleLine MapView="{Binding ElementName=myMapView}"/>
+                </WrapPanel>
+            </StackPanel>
+            <esri:Compass x:Name="myCompass" GeoView="{Binding ElementName=myMapView, Mode=OneWay}" Height="40" Canvas.Top="45" Canvas.Right="15" Width="40" AutoHide="False" Visibility="Collapsed"/>
+            <esri:Legend x:Name="myLegend" Width="200" Canvas.Left="180" Canvas.Bottom="50"  ReverseLayerOrder="False" FilterByVisibleScaleRange="True" Background="{StaticResource OpacityColorCsy}" Opacity="0.8" Visibility="Collapsed"/>
+            <ScrollViewer x:Name="myLayerLegend" Width="200" Canvas.Left="180" Canvas.Bottom="50" Background="{StaticResource OpacityColorCsy}" Opacity="0.8" Visibility="Collapsed">
+                <ItemsControl x:Name="myLayerLegendItems" ItemsSource="{Binding Map.OperationalLayers, ElementName=myMapView, Mode=OneWay}" Margin="10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                <esri:LayerLegend LayerContent="{Binding}" IncludeSublayers="True" Margin="10,0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <TextBlock x:Name="myTest"  Canvas.Left="0" Canvas.Bottom="0" Text="就绪" Height="25" Width="1150" Background="#FF33A133" Foreground="White" FontWeight="Bold" Padding="0,4,0,0" TextWrapping="Wrap"/>
+        </Canvas>
+    </Viewbox>
+</controls:MetroWindow>
