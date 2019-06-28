@@ -3,11 +3,11 @@
 ## 实验介绍
   🙃基于`ArcGIS Runtime SDK for WPF`的小型通用GIS二次开发实验, 具体文档请参照[官方文档](https://developers.arcgis.com/net/latest/wpf/guide/guide-home.htm)。  
   😂实验代码大量`COPY`自官方示例以及网络博客，作者唯一自己动手写的仅有界面......
-  ![界面](https://github.com/soitwater/Arcgis-Runtimt-Secondary-Developmen/blob/master/Data/drag.PNG?raw=true)
-  ![操作](https://github.com/soitwater/Arcgis-Runtimt-Secondary-Developmen/blob/master/Data/control.gif?raw=true)
+  ![界面](https://github.com/soitwaterdemos/Arcgis-Runtimt-Secondary-Developmen/blob/master/Data/drag.PNG?raw=true)
+  ![操作](https://github.com/soitwaterdemos/Arcgis-Runtimt-Secondary-Developmen/blob/master/Data/control.gif?raw=true)
 
 ## 环境配置
-![环境配置](https://github.com/soitwater/Arcgis-Runtimt-Secondary-Developmen/blob/master/Data/help.PNG?raw=true)
+![环境配置](https://github.com/soitwaterdemos/Arcgis-Runtimt-Secondary-Developmen/blob/master/Data/help.PNG?raw=true)
 
 ## 启动路径
 双击`./MIX0300/start.sln`
